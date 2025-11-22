@@ -17,7 +17,7 @@ MyLMSProject/
         ├── App.jsx      (xóa nội dung cũ, copy nội dung File 2 vào đây)
         ├── main.jsx     (file chạy chính của React)
         └── index.css    (file CSS, nhúng Tailwind vào đây)
-
+        
 ---
 
 ## ⚙️ Cài đặt & Chạy
