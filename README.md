@@ -1,4 +1,4 @@
-# MyLMSProject
+# TutorHub-Program
 
 Dự án demo hệ thống **Learning Management System (LMS)** đơn giản, gồm **Backend (Flask - Python)** và **Frontend (ReactJS + TailwindCSS)**.  
 Mục tiêu: giúp người mới dễ dàng chạy thử một hệ thống fullstack cơ bản.
@@ -6,28 +6,50 @@ Mục tiêu: giúp người mới dễ dàng chạy thử một hệ thống ful
 ---
 
 ## 📂 Cấu trúc thư mục
-MyLMSProject/ │── backend/ │   ├── server.py        # Flask backend (API giả lập) │   └── venv/            # Virtual environment (Python) │ │── frontend/ │   ├── index.html │   ├── package.json │   └── src/ │       ├── App.jsx      # React frontend (UI demo) │       ├── main.jsx │       └── index.css    # TailwindCSS config
+MyLMSProject/
+├── backend/
+│   ├── server.py        (Copy nội dung File 1 vào đây)
+│   └── venv/            (môi trường ảo Python, tạo sau)
+└── frontend/
+    ├── index.html       (có sẵn khi tạo React)
+    ├── package.json     (có sẵn khi tạo React)
+    └── src/
+        ├── App.jsx      (xóa nội dung cũ, copy nội dung File 2 vào đây)
+        ├── main.jsx     (file chạy chính của React)
+        └── index.css    (file CSS, nhúng Tailwind vào đây)
 
 ---
 
 ## ⚙️ Cài đặt & Chạy
 
 ### 1. Backend (Flask)
+cd MyLMSProject/backend
+**Tạo môi trường ảo (Khuyên dùng):**
 ```bash
-cd backend
 python -m venv venv
+```
+**Kích hoạt môi trường ảo:**
+```bash
 .\venv\Scripts\activate
+```
+**Cài thư viện Flask và Flask-CORS:**
+```bash
 pip install flask flask-cors
+```
+**Chạy Server:**
+```bash
 python server.py
-
+```
+Khi thấy dòng chữ "Running on [http://127.0.0.1:5000](http://127.0.0.1:5000)" là thành công. **Đừng tắt cửa sổ này**, hãy để nó chạy ngầm.*
 
 👉 Server chạy tại: http://127.0.0.1:5000
 
 2. Frontend (React + Vite)
+```bash
 cd frontend
 npm install
 npm run dev
-
+```
 
 👉 Mở trình duyệt tại: http://localhost:5173
 
