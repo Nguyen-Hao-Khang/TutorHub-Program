@@ -6,18 +6,8 @@ Mục tiêu: giúp người mới dễ dàng chạy thử một hệ thống ful
 ---
 
 ## 📂 Cấu trúc thư mục
-MyLMSProject/
-├── backend/
-│   ├── server.py        (Copy nội dung File 1 vào đây)
-│   └── venv/            (môi trường ảo Python, tạo sau)
-└── frontend/
-    ├── index.html       (có sẵn khi tạo React)
-    ├── package.json     (có sẵn khi tạo React)
-    └── src/
-        ├── App.jsx      (xóa nội dung cũ, copy nội dung File 2 vào đây)
-        ├── main.jsx     (file chạy chính của React)
-        └── index.css    (file CSS, nhúng Tailwind vào đây)
-        
+<pre>## MyLMSProject/├── backend/│   ├── server.py        (Copy nội dung File 1 vào đây)│   └── venv/            (môi trường ảo Python, tạo sau)└── frontend/├── index.html       (có sẵn khi tạo React)├── package.json     (có sẵn khi tạo React)└── src/├── App.jsx      (xóa nội dung cũ, copy nội dung File 2 vào đây)├── main.jsx     (file chạy chính của React)└── index.css    (file CSS, nhúng Tailwind vào đây)</pre>
+
 ---
 
 ## ⚙️ Cài đặt & Chạy
