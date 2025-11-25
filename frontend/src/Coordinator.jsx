@@ -4,7 +4,6 @@ const API_BASE_URL = "http://127.0.0.1:5000/api";
 
 // COMPONENT PHỤ: HIỂN THỊ THỜI KHÓA BIỂU DẠNG BẢNG
 const ScheduleTable = ({ scheduleString }) => {
-    // ... (Giữ nguyên logic ScheduleTable) ...
     const parts = scheduleString ? scheduleString.split(',').map(p => p.trim()) : [];
     
     if (parts.length < 3) {
@@ -40,196 +39,6 @@ const ScheduleTable = ({ scheduleString }) => {
         </table>
     );
 };
-
-
-// 2. COMPONENT KHIẾU NẠI MỚI (Dựa trên giao diện tĩnh)
-// const ComplaintsView = ({ complaints }) => {
-//     const validComplaints = Array.isArray(complaints) ? complaints : [];
-    
-//     const totalComplaints = validComplaints.length;
-//     const solvedComplaints = validComplaints.filter(c => c.status === 'Solved').length;
-//     const pendingComplaints = validComplaints.filter(c => c.status === 'Pending').length;
-//     const rejectedComplaints = validComplaints.filter(c => c.status === 'Rejected').length;
-
-//     const getStatusInfo = (status) => {
-//         switch (status) {
-//             case 'Solved':
-//                 return { color: 'text-green-600', icon: '🟢', bgColor: 'bg-green-100' };
-//             case 'Pending':
-//                 return { color: 'text-orange-600', icon: '🟡', bgColor: 'bg-yellow-100' };
-//             case 'Rejected':
-//                 return { color: 'text-red-600', icon: '🔴', bgColor: 'bg-red-100' };
-//             default:
-//                 return { color: 'text-gray-600', icon: '⚫', bgColor: 'bg-gray-100' };
-//         }
-//     };
-
-//     if (!Array.isArray(complaints)) {
-//         return (
-//             <div className="p-10 text-center bg-red-50 border border-red-300 rounded-lg">
-//                 <h3 className="text-xl font-bold text-red-700">Lỗi Tải Dữ Liệu Khiếu Nại</h3>
-//                 <p className="text-red-600 mt-2">Không thể kết nối đến server hoặc dữ liệu trả về không hợp lệ. Vui lòng kiểm tra API backend.</p>
-//             </div>
-//         );
-//     }
-
-//     return (
-//         <div className="items-start bg-white">
-//             <div className="flex items-start self-stretch mb-[45px] mx-[21px] mr-[63px] gap-6">
-                
-//                 {/* Thẻ: Tổng số khiếu nại */}
-//                 <div className="flex flex-col items-start bg-white w-[436px] py-[18px] pl-6 gap-12 rounded-xl border border-solid border-[#DEDEDE]">
-//                     <img
-//                         src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/sf31g7xt_expires_30_days.png"} 
-//                         className="w-11 h-11 mr-[368px] rounded-xl object-fill"
-//                     />
-//                     <div className="flex flex-col items-start self-stretch mr-6 gap-3">
-//                         <span className="text-black text-lg" >
-//                             {"Tổng số khiếu nại"}
-//                         </span>
-//                         <div className="flex flex-col items-center self-stretch">
-//                             <span className="text-black text-2xl font-bold" >
-//                                 {totalComplaints}
-//                             </span>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* Thẻ: Số khiếu nại đã được xử lý */}
-//                 <div className="flex flex-col items-start bg-white w-[436px] py-[18px] pl-6 gap-12 rounded-xl border border-solid border-[#DEDEDE]">
-//                     <img
-//                         src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/4k041oqy_expires_30_days.png"} 
-//                         className="w-11 h-11 mr-[368px] rounded-xl object-fill"
-//                     />
-//                     <div className="flex flex-col items-start self-stretch mr-6 gap-3">
-//                         <span className="text-black text-lg" >
-//                             {"Số khiếu nại đã được xử lý"}
-//                         </span>
-//                         <div className="flex flex-col items-center self-stretch">
-//                             <span className="text-black text-2xl font-bold text-green-600" >
-//                                 {solvedComplaints}
-//                             </span>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* Thẻ: Số khiếu nại còn lại */}
-//                 <div className="flex flex-col items-start bg-white w-[436px] py-[18px] pl-6 gap-12 rounded-xl border border-solid border-[#DEDEDE]">
-//                     <img
-//                         src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/yulhl5ma_expires_30_days.png"} 
-//                         className="w-11 h-11 mr-[368px] rounded-xl object-fill"
-//                     />
-//                     <div className="flex flex-col items-start self-stretch mr-6 gap-3">
-//                         <span className="text-black text-lg" >
-//                             {"Số khiếu nại còn lại"}
-//                         </span>
-//                         <div className="flex flex-col items-center self-stretch">
-//                             <span className="text-black text-2xl font-bold text-orange-600" >
-//                                 {pendingComplaints + rejectedComplaints}
-//                             </span>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-
-//             <div className="flex flex-col self-stretch mb-[159px] mx-[21px] mr-[63px] gap-6">
-//                 <div className="flex justify-between items-start self-stretch">
-//                     <div className="flex flex-col items-start w-[211px] gap-2">
-//                         <span className="text-black text-base font-bold mr-[105px]" >
-//                             {`Số khiếu nại (${totalComplaints})`}
-//                         </span>
-//                         <span className="text-[#989898] text-sm" >
-//                             {"Xem danh sách khiếu nại bên dưới"}
-//                         </span>
-//                     </div>
-                    
-//                     {/* Thanh tìm kiếm và Download */}
-//                     <div className="flex items-start w-[537px] gap-3">
-//                         <div className="flex items-center bg-[#F9FAFC] w-[360px] rounded border border-solid border-[#DEDEDE]">
-//                             <img
-//                                 src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/pa5tu8nx_expires_30_days.png"} 
-//                                 className="w-4 h-4 ml-3 mr-2.5 rounded object-fill"
-//                             />
-//                             <input
-//                                 placeholder={"Search Here"}
-//                                 className="flex-1 self-stretch text-[#989898] bg-transparent text-sm py-[7px] mr-1 border-0 focus:ring-0"
-//                             />
-//                         </div>
-//                         <button className="flex items-center bg-white text-left w-[165px] py-[7px] px-2.5 gap-2.5 rounded border border-solid border-[#DEDEDE]">
-//                             <img
-//                                 src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/ecjrzr5a_expires_30_days.png"} 
-//                                 className="w-4 h-4 rounded object-fill"
-//                             />
-//                             <span className="text-black text-sm" >
-//                                 {"Download as pdf"}
-//                             </span>
-//                         </button>
-//                     </div>
-//                 </div>
-
-//                 {/* Thanh Filter */}
-//                 <div className="flex justify-between items-center self-stretch bg-[#F9FAFC] px-3">
-//                     <span className="text-black text-sm" >
-//                         {"Filter Your Search"}
-//                     </span>
-//                     <div className="flex items-start w-[468px] p-3 gap-3">
-//                         <div className="flex items-center bg-white w-[100px] py-1 px-2.5 rounded-lg border border-solid border-[#DEDEDE]">
-//                             <div className="bg-[#51CF66] w-2 h-2 mr-2.5 rounded-xl"></div>
-//                             <span className="text-black text-xs mr-[13px]" >
-//                                 {"Solved"}
-//                             </span>
-//                             <img
-//                                 src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/d8jfsw35_expires_30_days.png"} 
-//                                 className="w-4 h-4 rounded-lg object-fill"
-//                             />
-//                         </div>
-//                         <div className="flex items-center bg-white w-[120px] py-1 px-2.5 rounded-lg border border-solid border-[#DEDEDE]">
-//                             <div className="bg-[#FF6B6B] w-2 h-2 mr-2.5 rounded-xl"></div>
-//                             <span className="text-black text-xs mr-[13px]" >
-//                                 {"Pending"}
-//                             </span>
-//                             <img
-//                                 src={"https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/x6aqwlsn_expires_30_days.png"} 
-//                                 className="w-4 h-4 rounded-lg object-fill"
-//                             />
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* Bảng Danh sách Khiếu nại */}
-//                 <div className="flex flex-col self-stretch rounded-xl border border-solid border-[#DEDEDE]">
-//                     {/* Header Bảng */}
-//                     <div className="flex justify-between items-center self-stretch bg-[#FCFCFC] px-3 border-b border-solid border-[#DEDEDE] font-bold">
-//                         <span className="text-black text-sm w-[150px] py-2">Tên khiếu nại</span>
-//                         <span className="text-black text-sm w-[100px] py-2">ID Khiếu nại</span>
-//                         <span className="text-black text-sm flex-1 py-2">Nguyên nhân khiếu nại</span>
-//                         <span className="text-black text-sm w-[150px] py-2 text-center">Trạng thái</span>
-//                     </div>
-
-//                     {/* Nội dung Bảng */}
-//                     {validComplaints.map((c, index) => {
-//                         const { color } = getStatusInfo(c.status);
-//                         return (
-//                             <div key={c.id} className={`flex justify-between items-center self-stretch px-3 py-2 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} border-b border-solid border-[#EEEEEE] last:border-b-0 hover:bg-gray-200`}>
-//                                 <span className="text-black text-sm w-[150px]">{c.name}</span>
-//                                 <span className="text-black text-sm w-[100px] font-medium">{c.id}</span>
-//                                 <span className="text-black text-sm flex-1">{c.reason}</span>
-//                                 <span className={`text-sm w-[150px] font-semibold text-center ${color}`}>
-//                                     {c.status}
-//                                 </span>
-//                             </div>
-//                         );
-//                     })}
-//                     {validComplaints.length === 0 && (
-//                         <div className="text-center py-5 italic text-gray-500">
-//                             Không có khiếu nại nào được tìm thấy.
-//                         </div>
-//                     )}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
 
 
 // HEADER
@@ -268,36 +77,49 @@ const ComplaintsView = ({ complaints }) => {
   return (
     <div className="flex flex-col items-center w-full bg-white">
 
-      {/* ===== 3 Ô Tổng Quan ===== */}
-      <div className="flex justify-between w-[1356px] h-[191px] mt-[45px]">
+        {/* ===== 3 Ô Tổng Quan ===== */}
+        <div className="flex justify-between w-[1356px] h-[191px] mt-[45px] rounded-2xl">
         {[
-          { label: 'Tổng số khiếu nại', value: totalComplaints, color: 'text-black' },
-          { label: 'Đã được xử lý', value: solvedComplaints, color: 'text-green-600' },
-          { label: 'Còn lại', value: pendingComplaints + rejectedComplaints, color: 'text-orange-600' }
+            { label: 'Tổng số khiếu nại', value: totalComplaints, color: 'text-black' },
+            { label: 'Đã được xử lý', value: solvedComplaints, color: 'text-green-600' },
+            { label: 'Còn lại', value: pendingComplaints + rejectedComplaints, color: 'text-orange-600' }
         ].map((item, idx) => (
-          <div key={idx} className="w-[436px] h-[191px] bg-white border border-gray-200 rounded-xl flex flex-col justify-center items-center">
-            <span className="text-lg font-semibold">{item.label}</span>
-            <span className={`text-4xl font-bold mt-2 ${item.color}`}>{item.value}</span>
-          </div>
-        ))}
-      </div>
+            <div
+                key={idx}
+                className="relative w-[436px] h-[191px] bg-white 
+                            border-2 border-[#dedede] [border-radius:12px] 
+                            flex flex-col justify-center items-center"
+            >
+                {/* Icon góc trên trái */}
+                <img
+                    src="https://storage.googleapis.com/tagjs-prod.appspot.com/v1/7ZkQYO2XvF/4k041oqy_expires_30_days.png"
+                    alt="icon"
+                    className="absolute top-[10px] left-[10px] w-[50px] h-[50px]"
+                />
 
-      {/* ===== Frame Danh Sách + Search + Download ===== */}
-      <div className="flex flex-col w-[1356px] mt-[45px] min-h-[526px]">
+                {/* Nội dung */}
+                <span className="text-2xl font-extrabold mt-6">{item.label}</span> 
+                <span className={`text-2xl font-extrabold mt-2 ${item.color}`}>{item.value}</span>
+            </div>
+        ))}
+        </div>
+
+        {/* ===== Frame Danh Sách + Search + Download ===== */}
+        <div className="flex flex-col w-[1356px] mt-[45px] min-h-[526px]">
 
         {/* Header: Title + Search + Download */}
         <div className="flex justify-between items-center h-[44px] mb-[24px]">
-          <span className="text-lg font-bold">{`Số khiếu nại (${totalComplaints})`}</span>
+          <span className="text-2xl font-extrabold">{`Số khiếu nại (${totalComplaints})`}</span>
 
           <div className="flex items-center gap-[24px]">
             <input
               type="text"
               placeholder="Tìm kiếm..."
-              className="w-[300px] h-[44px] px-4 border border-gray-300 rounded-lg outline-none"
+              className="w-[300px] h-[44px] [border-radius:5px] bg-[#ffffff] border-2 border-[#dedede] flex flex-col justify-center items-center"
             />
             <button
               onClick={() => alert('Tính năng đang trong quá trình phát triển')}
-              className="w-[130px] h-[44px] border border-gray-300 rounded-lg hover:bg-gray-50"
+              className="w-[130px] h-[44px] [border-radius:5px] bg-white border-2 border-[#dedede] flex flex-col justify-center items-center"
             >
               Download
             </button>
@@ -307,37 +129,39 @@ const ComplaintsView = ({ complaints }) => {
         {/* Bảng Khiếu Nại */}
         <div className="flex flex-col w-full border border-gray-200 rounded-xl overflow-hidden">
 
-          {/* Header Table */}
-          <div className="flex w-full bg-[#f9fafc] font-semibold text-sm">
-            <div className="w-[150px] text-center py-2 border-r border-gray-200">ID</div>
-            <div className="flex-1 text-center py-2 border-r border-gray-200">Người gửi</div>
-            <div className="flex-[2] text-center py-2 border-r border-gray-200">Nội dung</div>
-            <div className="w-[150px] text-center py-2 border-r border-gray-200">Ngày gửi</div>
-            <div className="w-[150px] text-center py-2">Trạng thái</div>
-          </div>
-
-          {/* Rows */}
-          {validComplaints.length > 0 ? (
-            validComplaints.map((c, idx) => {
-              const { color } = getStatusInfo(c.status);
-              return (
-                <div
-                  key={c.id}
-                  className={`flex w-full py-2 text-sm border-b border-gray-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100`}
-                >
-                  <div className="w-[150px] text-center">{c.id}</div>
-                  <div className="flex-1 text-center">{c.sender}</div>
-                  <div className="flex-[2] text-center">{c.reason}</div>
-                  <div className="w-[150px] text-center">{c.date}</div>
-                  <div className={`w-[150px] text-center font-semibold ${color}`}>{c.status}</div>
-                </div>
-              );
-            })
-          ) : (
-            <div className="text-center py-5 italic text-gray-500">
-              Không có khiếu nại nào được tìm thấy.
+            {/* Header Table */}
+            <div className="grid grid-cols-[50px_151.3px_100px_1fr_150px] bg-[#FCFCFC] border-b border-l border-solid border-[#DEDEDE] font-bold min-h-[30px]">
+                <span className="text-black text-xl pl-[2px] border-r border-[#DEDEDE] text-center flex items-center justify-center">STT</span> 
+                <span className="text-black text-xl pl-[2px] border-r border-[#DEDEDE] flex items-center">Tên khiếu nại</span>
+                <span className="text-black text-xl pl-[2px] border-r border-[#DEDEDE] flex items-center">ID Khiếu nại</span>
+                <span className="text-black text-xl pl-[2px] border-r border-[#DEDEDE] flex items-center">Nguyên nhân khiếu nại</span>
+                <span className="text-black text-xl pl-[2px] text-center flex items-center justify-center">Trạng thái</span>
             </div>
-          )}
+
+            {/* Rows */}
+            {validComplaints.length > 0 ? (
+                validComplaints.map((c, idx) => {
+                    const { color } = getStatusInfo(c.status);
+                    return (
+                    <div
+                        key={c.id}
+                        className="grid grid-cols-[50px_151.3px_100px_1fr_150px] border-b border-solid border-[#EEEEEE] last:border-b-0 hover:bg-gray-200 min-h-[30px]"
+                    >
+                        <span className="text-black text-sm font-medium pl-[2px] border-r border-[#DEDEDE] text-center flex items-center justify-center">{idx + 1}</span> 
+                        <span className="text-black text-sm pl-[2px] border-r border-[#DEDEDE] flex items-center">{c.name}</span>
+                        <span className="text-black text-sm font-medium pl-[2px] border-r border-[#DEDEDE] flex items-center">{c.id}</span>
+                        <span className="text-black text-sm pl-[2px] border-r border-[#DEDEDE] flex items-center">{c.reason}</span>
+                        <span className={`text-sm font-semibold text-center ${color} pl-[2px] border-r border-[#DEDEDE] flex items-center justify-center`}>
+                            {c.status}
+                        </span>
+                    </div>
+                    );
+                })
+            ) : (
+            <div className="text-center py-5 italic text-gray-500">
+                Không có khiếu nại nào được tìm thấy.
+            </div>
+            )}
         </div>
       </div>
     </div>
@@ -350,7 +174,6 @@ const ComplaintsView = ({ complaints }) => {
 
 
 const Header = ({ onTabChange, activeTab }) => {
-    // ... (Giữ nguyên logic Header) ...
     const items = [
         { text: "Trang chủ", value: "Home" }, 
         { text: "Quản lý", value: "Management" }, 
@@ -426,14 +249,10 @@ const Coordinator = () => {
 
     useEffect(() => {
         if (activeTab === "Management") {
-            // ... (Giữ nguyên logic tải data Quản lý) ...
-             // 1. Tải danh sách Khóa học
             fetch(`${API_BASE_URL}/courses`)
                 .then((res) => res.json())
                 .then((data) => setClasses(data))
                 .catch(error => console.error("Error fetching courses:", error));
-
-            // 2. Tải danh sách Người dùng và lọc ra Mentor
             fetch(`${API_BASE_URL}/users`)
                 .then((res) => res.json())
                 .then((data) => {
@@ -444,7 +263,7 @@ const Coordinator = () => {
         } 
         
         else if (activeTab === "Complaints") {
-            setComplaints([]); // Xóa dữ liệu cũ khi tải
+            setComplaints([]);
             setComplaintsLoadError(false);
             
             fetch(`${API_BASE_URL}/complaints`) 
@@ -458,16 +277,14 @@ const Coordinator = () => {
                     if (Array.isArray(data)) {
                         setComplaints(data);
                     } else {
-                        // Trường hợp API trả về 200 OK nhưng dữ liệu không phải mảng
                         throw new Error("Dữ liệu trả về không phải là mảng hợp lệ.");
                     }
                 })
                 .catch(error => {
                     console.error("Lỗi tải khiếu nại:", error);
-                    // Báo lỗi cho người dùng và cập nhật state lỗi
                     alert("Lỗi tải dữ liệu khiếu nại: Không thể kết nối đến server hoặc dữ liệu không hợp lệ.");
                     setComplaintsLoadError(true);
-                    setComplaints(null); // Đặt thành null để kích hoạt thông báo lỗi trong ComplaintsView
+                    setComplaints(null);
                 });
         }
     }, [activeTab]);
@@ -477,7 +294,6 @@ const Coordinator = () => {
     // ============================================================
 
     const openClass = (cls) => {
-        // ... (Giữ nguyên logic openClass) ...
         setSelectedMentor(null);
         setSelectedClass(null); 
 
@@ -504,7 +320,6 @@ const Coordinator = () => {
     };
 
     const openMentor = (m) => {
-        // ... (Giữ nguyên logic openMentor) ...
         setSelectedClass(null);
         setSelectedMentor(null);
 

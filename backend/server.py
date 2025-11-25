@@ -142,34 +142,58 @@ users = base_mentees + base_mentors + other_users
 complaints = [
     {
         'id': "CMP0001",
-        'name': "Sự cố Thiết bị",
-        'reason': "Máy chiếu phòng H6-302 không kết nối được với laptop.",
+        'name': "Sự cố thiết bị",
+        'reason': "Máy chiếu phòng H3-201 không hoạt động trong buổi học ngày 15/10.",
         'status': "Solved"
     },
     {
         'id': "CMP0002",
-        'name': "Vấn đề Dịch vụ",
-        'reason': "Nước uống tại tầng 4 hết đã 2 ngày nhưng chưa được bổ sung.",
+        'name': "Vấn đề dịch vụ",
+        'reason': "Phòng H6-802 thiếu thiết mạch chạy mô phỏng.",
         'status': "Pending"
     },
     {
         'id': "CMP0003",
-        'name': "Yêu cầu Hỗ trợ",
-        'reason': "Cần được hỗ trợ cài đặt phần mềm chuyên ngành.",
+        'name': "Yêu cầu hỗ trợ",
+        'reason': "Cần được hỗ trợ cài đặt phần mềm nghiên cứu từ Khoa Máy tính.",
         'status': "Pending"
     },
     {
         'id': "CMP0004",
         'name': "Cải tạo CSVC",
-        'reason': "Cửa phòng Lab bị kẹt, rất khó mở.",
+        'reason': "Cửa phòng Lab H6-601 mất tín hiệu điện, gây kẹt cửa.",
         'status': "Solved"
     },
     {
         'id': "CMP0005",
         'name': "Vấn đề khác",
-        'reason': "Có tiếng ồn lớn từ công trình xây dựng gần khu giảng đường.",
+        'reason': "Có tiếng ồn lớn từ công trình xây dựng gần phòng H6-109.",
         'status': "Rejected"
-  }
+    },
+    {
+        'id': "CMP0006",
+        'name': "Sự cố thiết bị",
+        'reason': "Lỗi kết nối mạng trong khoảng thời gian tiết 7-8 ngày 1/12.",
+        'status': "Solved"
+    },
+    {
+        'id': "CMP0007",
+        'name': "Yêu cầu hỗ trợ",
+        'reason': "Chấp nhận ghép lớp đối với học viên X vì lý do Y.",
+        'status': "Solved"
+    },
+    {
+        'id': "CMP0008",
+        'name': "Yêu cầu hỗ trợ",
+        'reason': "Chuyển đổi hình thức buổi học Môn học 1 tiết 3-4 ngày 12/11 từ trực tiếp sang trực tuyến.",
+        'status': "Solved"
+    },
+        {
+        'id': "CMP0009",
+        'name': "Yêu cầu hỗ trợ",
+        'reason': "Gia hạn thời gian nộp đề thi do thay đổi hình thức thi.",
+        'status': "Pending"
+    },
 ]
 
 
